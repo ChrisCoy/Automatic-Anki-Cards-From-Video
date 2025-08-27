@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "ESNext", // Use ECMAScript modules
+    "target": "ESNext", // Target latest JS features
+    "moduleResolution": "node", // Resolve modules like Node.js
+    "checkJs": true, // Enable type checking for JS
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules without them
+    "allowImportingTsExtensions": true
+  },
+  "include": [
+    "src/**/*" // Adjust paths to match your project structure
+  ],
+  "exclude": ["src/translate-with-ai.ts"]
+}
