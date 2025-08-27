@@ -125,7 +125,6 @@ const main = async () => {
     for (let i = 0; i < subtitles.ja.length; i++) {
       const percent = Math.floor(((i + 1) / subtitles.ja.length) * 100);
 
-      // is there anyway to print this in the same line? removing the old one
       process.stdout.write(`Progress: ${percent}%\r`);
 
       const jaElement = subtitles.ja[i];
