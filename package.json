@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file .env src/main.ts download=false url=https://youtu.be/PCp2iXA1uLE"
+    "start": "node --env-file .env src/main.ts no-download=true url=https://youtu.be/m34DPnRUfMU"
   },
   "keywords": [],
   "author": "",

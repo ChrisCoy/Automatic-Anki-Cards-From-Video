@@ -104,12 +104,12 @@ const downloadAudioAndSubs = async (url = "") => {
     ja: [],
   };
 
-  if (args.download === false) {
+  if (args["no-download"] === false) {
     const ytDlpWrap = await getYTDlp();
     await ytDlpWrap.execPromise([
       url,
       "--sub-langs",
-      "ja",
+      "ja.*", // any japanese sub
       "--write-subs",
       "--extract-audio",
       "--audio-format",
@@ -122,16 +122,19 @@ const downloadAudioAndSubs = async (url = "") => {
   }
 
   const jaPath = `${projectRoot}/content`;
-  if (fs.existsSync(`${jaPath}/${fileName}.ja.vtt`)) {
-    const cues = parseVtt(
-      fs.readFileSync(`${jaPath}/${fileName}.ja.vtt`).toString()
-    );
+  const files = fs.readdirSync(jaPath);
+  const jaFile = files.find(
+    (f) => f.startsWith(`${fileName}.ja`) && f.endsWith(".vtt")
+  );
+
+  if (jaFile) {
+    const cues = parseVtt(fs.readFileSync(`${jaPath}/${jaFile}`, "utf8"));
     subtitles.ja = cues;
   }
 
   return {
     ...subtitles,
-    fileId: fileName
+    fileId: fileName,
   };
 };
 
